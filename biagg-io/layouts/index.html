@@ -1,0 +1,111 @@
+{{ define "main" }}
+
+{{/* ── Gather latest posts per section ── */}}
+{{ $blog    := where site.RegularPages "Section" "blog"        | first 3 }}
+{{ $os      := where site.RegularPages "Section" "one-system"  | first 1 }}
+{{ $geeky   := where site.RegularPages "Section" "weekly-geeky"| first 1 }}
+{{ $recs    := where site.RegularPages "Section" "recommendations" | first 1 }}
+
+{{ $hero    := index $blog 0 }}
+{{ $second1 := index $blog 1 }}
+{{ $second2 := index $blog 2 }}
+
+{{/* ── HERO ROW ── */}}
+{{ with $hero }}
+<div class="hero-row">
+  <div class="hero-post">
+    {{ with .Params.image }}
+    <img class="post-thumb tall" src="{{ . }}" alt="">
+    {{ else }}
+    <div class="post-thumb tall"></div>
+    {{ end }}
+    <div class="hero-content">
+      <a href="{{ .Permalink }}"><div class="post-title">{{ .Title }}</div></a>
+      <div class="post-meta">
+        <span class="date">{{ .Date.Format "2006.01.02" }}</span>
+        {{ range .Params.tags }}&mdash; <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a> {{ end }}
+      </div>
+      <p class="post-excerpt">{{ .Summary }}</p>
+    </div>
+  </div>
+
+  {{/* ── Interesting reads sidebar pulled from latest Weekly Geeky ── */}}
+  <div class="sidebar">
+    <div class="sidebar-label">Interesting reads</div>
+    {{ with index $geeky 0 }}
+      {{ range .Params.reads }}
+      <div class="read-item">
+        <a class="read-title" href="{{ .url }}" target="_blank" rel="noopener">{{ .title }} — {{ .author }}</a>
+        <div class="read-meta">{{ .source }} · {{ .date }}</div>
+      </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{/* ── SECONDARY ROW ── */}}
+<div class="secondary-row">
+  {{ with $second1 }}
+  <div class="secondary-post">
+    {{ with .Params.image }}<img class="post-thumb" src="{{ . }}" alt="">{{ else }}<div class="post-thumb"></div>{{ end }}
+    <div>
+      <a href="{{ .Permalink }}"><div class="post-title">{{ .Title }}</div></a>
+      <div class="post-meta">
+        <span class="date">{{ .Date.Format "2006.01.02" }}</span>
+        {{ range .Params.tags }}&mdash; <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a> {{ end }}
+      </div>
+      <p class="post-excerpt">{{ .Summary }}</p>
+    </div>
+  </div>
+  {{ end }}
+
+  {{ with $second2 }}
+  <div class="secondary-post">
+    {{ with .Params.image }}<img class="post-thumb" src="{{ . }}" alt="">{{ else }}<div class="post-thumb"></div>{{ end }}
+    <div>
+      <a href="{{ .Permalink }}"><div class="post-title">{{ .Title }}</div></a>
+      <div class="post-meta">
+        <span class="date">{{ .Date.Format "2006.01.02" }}</span>
+        {{ range .Params.tags }}&mdash; <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a> {{ end }}
+      </div>
+      <p class="post-excerpt">{{ .Summary }}</p>
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+{{/* ── FOOTER TEASERS ── */}}
+<div class="footer-row">
+  {{ with index $os 0 }}
+  <div class="footer-teaser">
+    <div class="teaser-label">Latest OS post</div>
+    <a href="{{ .Permalink }}"><div class="teaser-title">{{ .Title }}</div></a>
+    <div class="teaser-meta">{{ .Date.Format "2006.01.02" }}
+      {{ range .Params.tags }}&mdash; <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a> {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{ with index $geeky 0 }}
+  <div class="footer-teaser">
+    <div class="teaser-label">Latest Weekly Geeky</div>
+    <a href="{{ .Permalink }}"><div class="teaser-title">{{ .Title }}</div></a>
+    <div class="teaser-meta">{{ .Date.Format "2006.01.02" }}
+      {{ range .Params.tags }}&mdash; <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a> {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  {{ with index $recs 0 }}
+  <div class="footer-teaser">
+    <div class="teaser-label">Latest recommendation</div>
+    <a href="{{ .Permalink }}"><div class="teaser-title">{{ .Title }}</div></a>
+    <div class="teaser-meta">{{ .Date.Format "2006.01.02" }}
+      {{ range .Params.tags }}&mdash; <a href="/tags/{{ . | urlize }}" class="tag">#{{ . }}</a> {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+{{ end }}
