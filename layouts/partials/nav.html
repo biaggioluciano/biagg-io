@@ -1,0 +1,9 @@
+<nav>
+  {{ range .Site.Menus.main }}
+  {{- $active := eq $.Section (path.Base .URL | strings.TrimSuffix "/") }}
+  {{- if eq .URL "/" }}{{ $active = $.IsHome }}{{ end }}
+  <a class="nav-item{{ if $active }} active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+  <span class="nav-sep">|</span>
+  {{ end }}
+  <span class="nav-item nav-search">Search ⌕</span>
+</nav>

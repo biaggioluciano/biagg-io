@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on Biagg.io</title>
+    <link>http://localhost:1313/tags/tools/</link>
+    <description>Recent content in Tools on Biagg.io</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>On Building Systems That Last</title>
+      <link>http://localhost:1313/blog/building-systems-that-last/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/building-systems-that-last/</guid>
+      <description>&lt;p&gt;Most productivity systems collapse under the weight of their own complexity. Here&amp;rsquo;s what I&amp;rsquo;ve learned.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Recommendation: Obsidian for notes</title>
+      <link>http://localhost:1313/recommendations/obsidian/</link>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/recommendations/obsidian/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve tried them all. Obsidian stuck. Here&amp;rsquo;s why.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
